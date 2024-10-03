@@ -1,0 +1,240 @@
+@prefix : <https://github.com/Deijdane/LLM_ontology> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://github.com/Deijdane/LLM_ontology> .
+
+<https://github.com/Deijdane/LLM_ontology> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://github.com/Deijdane/LLM_ontology/devoloppedBy
+<https://github.com/Deijdane/LLM_ontology/devoloppedBy> rdf:type owl:ObjectProperty ;
+                                                        rdfs:subPropertyOf owl:topObjectProperty ;
+                                                        owl:inverseOf <https://github.com/Deijdane/LLM_ontology/hasDevolopped> ;
+                                                        rdf:type owl:FunctionalProperty ;
+                                                        rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                        rdfs:range <https://github.com/Deijdane/LLM_ontology/Company> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/fromLanguage
+<https://github.com/Deijdane/LLM_ontology/fromLanguage> rdf:type owl:ObjectProperty ;
+                                                        rdfs:subPropertyOf owl:topObjectProperty ;
+                                                        owl:inverseOf <https://github.com/Deijdane/LLM_ontology/toLanguage> ;
+                                                        rdfs:domain <https://github.com/Deijdane/LLM_ontology/Task> ;
+                                                        rdfs:range <https://github.com/Deijdane/LLM_ontology/Language> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/hasArchitecture
+<https://github.com/Deijdane/LLM_ontology/hasArchitecture> rdf:type owl:ObjectProperty ;
+                                                           rdfs:subPropertyOf owl:topObjectProperty ;
+                                                           owl:inverseOf <https://github.com/Deijdane/LLM_ontology/isArchitectureOf> ;
+                                                           rdf:type owl:FunctionalProperty ;
+                                                           rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                           rdfs:range <https://github.com/Deijdane/LLM_ontology/Architecture> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/hasDevolopped
+<https://github.com/Deijdane/LLM_ontology/hasDevolopped> rdf:type owl:ObjectProperty ;
+                                                         rdfs:subPropertyOf owl:topObjectProperty ;
+                                                         rdfs:domain <https://github.com/Deijdane/LLM_ontology/Company> ;
+                                                         rdfs:range <https://github.com/Deijdane/LLM_ontology/LLM> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/hasTask
+<https://github.com/Deijdane/LLM_ontology/hasTask> rdf:type owl:ObjectProperty ;
+                                                   rdfs:subPropertyOf owl:topObjectProperty ;
+                                                   owl:inverseOf <https://github.com/Deijdane/LLM_ontology/isTaskOf> ;
+                                                   rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                   rdfs:range <https://github.com/Deijdane/LLM_ontology/Task> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/isArchitectureOf
+<https://github.com/Deijdane/LLM_ontology/isArchitectureOf> rdf:type owl:ObjectProperty ;
+                                                            rdfs:subPropertyOf owl:topObjectProperty ;
+                                                            rdfs:domain <https://github.com/Deijdane/LLM_ontology/Architecture> ;
+                                                            rdfs:range <https://github.com/Deijdane/LLM_ontology/LLM> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/isTaskOf
+<https://github.com/Deijdane/LLM_ontology/isTaskOf> rdf:type owl:ObjectProperty ;
+                                                    rdfs:subPropertyOf owl:topObjectProperty ;
+                                                    rdfs:domain <https://github.com/Deijdane/LLM_ontology/Task> ;
+                                                    rdfs:range <https://github.com/Deijdane/LLM_ontology/LLM> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/isUsedBy
+<https://github.com/Deijdane/LLM_ontology/isUsedBy> rdf:type owl:ObjectProperty ;
+                                                    rdfs:subPropertyOf owl:topObjectProperty ;
+                                                    owl:inverseOf <https://github.com/Deijdane/LLM_ontology/use> ;
+                                                    rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                    rdfs:range <https://github.com/Deijdane/LLM_ontology/Users> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/toLanguage
+<https://github.com/Deijdane/LLM_ontology/toLanguage> rdf:type owl:ObjectProperty ;
+                                                      rdfs:subPropertyOf owl:topObjectProperty ;
+                                                      rdfs:domain <https://github.com/Deijdane/LLM_ontology/Language> ;
+                                                      rdfs:range <https://github.com/Deijdane/LLM_ontology/Task> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/trainedOn
+<https://github.com/Deijdane/LLM_ontology/trainedOn> rdf:type owl:ObjectProperty ;
+                                                     rdfs:subPropertyOf owl:topObjectProperty ;
+                                                     rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                     rdfs:range <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/use
+<https://github.com/Deijdane/LLM_ontology/use> rdf:type owl:ObjectProperty ;
+                                               rdfs:domain <https://github.com/Deijdane/LLM_ontology/Users> ;
+                                               rdfs:range <https://github.com/Deijdane/LLM_ontology/LLM> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://github.com/Deijdane/LLM_ontology/attention_heads
+<https://github.com/Deijdane/LLM_ontology/attention_heads> rdf:type owl:DatatypeProperty ;
+                                                           rdfs:subPropertyOf owl:topDataProperty ;
+                                                           rdf:type owl:FunctionalProperty ;
+                                                           rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                           rdfs:range xsd:int .
+
+
+###  https://github.com/Deijdane/LLM_ontology/batch_size
+<https://github.com/Deijdane/LLM_ontology/batch_size> rdf:type owl:DatatypeProperty ;
+                                                      rdfs:subPropertyOf owl:topDataProperty ;
+                                                      rdf:type owl:FunctionalProperty ;
+                                                      rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                      rdfs:range xsd:int .
+
+
+###  https://github.com/Deijdane/LLM_ontology/depth
+<https://github.com/Deijdane/LLM_ontology/depth> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:subPropertyOf owl:topDataProperty ;
+                                                 rdf:type owl:FunctionalProperty ;
+                                                 rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                 rdfs:range xsd:int .
+
+
+###  https://github.com/Deijdane/LLM_ontology/dropout_rate
+<https://github.com/Deijdane/LLM_ontology/dropout_rate> rdf:type owl:DatatypeProperty ;
+                                                        rdfs:subPropertyOf owl:topDataProperty ;
+                                                        rdf:type owl:FunctionalProperty ;
+                                                        rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                        rdfs:range xsd:int .
+
+
+###  https://github.com/Deijdane/LLM_ontology/hidden_size
+<https://github.com/Deijdane/LLM_ontology/hidden_size> rdf:type owl:DatatypeProperty ;
+                                                       rdfs:subPropertyOf owl:topDataProperty ;
+                                                       rdf:type owl:FunctionalProperty ;
+                                                       rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                       rdfs:range xsd:int .
+
+
+###  https://github.com/Deijdane/LLM_ontology/learning_rate
+<https://github.com/Deijdane/LLM_ontology/learning_rate> rdf:type owl:DatatypeProperty ;
+                                                         rdfs:subPropertyOf owl:topDataProperty ;
+                                                         rdf:type owl:FunctionalProperty ;
+                                                         rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                         rdfs:range xsd:float .
+
+
+###  https://github.com/Deijdane/LLM_ontology/num_parameters
+<https://github.com/Deijdane/LLM_ontology/num_parameters> rdf:type owl:DatatypeProperty ;
+                                                          rdfs:subPropertyOf owl:topDataProperty ;
+                                                          rdf:type owl:FunctionalProperty ;
+                                                          rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                          rdfs:range xsd:int .
+
+
+###  https://github.com/Deijdane/LLM_ontology/release_date
+<https://github.com/Deijdane/LLM_ontology/release_date> rdf:type owl:DatatypeProperty ;
+                                                        rdfs:subPropertyOf owl:topDataProperty ;
+                                                        rdf:type owl:FunctionalProperty ;
+                                                        rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                        rdfs:range xsd:dateTime .
+
+
+###  https://github.com/Deijdane/LLM_ontology/sequence_length
+<https://github.com/Deijdane/LLM_ontology/sequence_length> rdf:type owl:DatatypeProperty ;
+                                                           rdfs:subPropertyOf owl:topDataProperty ;
+                                                           rdf:type owl:FunctionalProperty ;
+                                                           rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                           rdfs:range xsd:int .
+
+
+###  https://github.com/Deijdane/LLM_ontology/vocable_size
+<https://github.com/Deijdane/LLM_ontology/vocable_size> rdf:type owl:DatatypeProperty ;
+                                                        rdfs:subPropertyOf owl:topDataProperty ;
+                                                        rdf:type owl:FunctionalProperty ;
+                                                        rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                        rdfs:range xsd:int .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://github.com/Deijdane/LLM_ontology/Architecture
+<https://github.com/Deijdane/LLM_ontology/Architecture> rdf:type owl:Class .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Company
+<https://github.com/Deijdane/LLM_ontology/Company> rdf:type owl:Class .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Dataset
+<https://github.com/Deijdane/LLM_ontology/Dataset> rdf:type owl:Class .
+
+
+###  https://github.com/Deijdane/LLM_ontology/LLM
+<https://github.com/Deijdane/LLM_ontology/LLM> rdf:type owl:Class ;
+                                               rdfs:subClassOf <https://github.com/Deijdane/LLM_ontology/Language_Model> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Language
+<https://github.com/Deijdane/LLM_ontology/Language> rdf:type owl:Class .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Language_Model
+<https://github.com/Deijdane/LLM_ontology/Language_Model> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <https://w3id.org/semsys/ns/swemls#StatisticalModel> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Task
+<https://github.com/Deijdane/LLM_ontology/Task> rdf:type owl:Class .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Users
+<https://github.com/Deijdane/LLM_ontology/Users> rdf:type owl:Class .
+
+
+###  https://w3id.org/semsys/ns/swemls#StatisticalModel
+<https://w3id.org/semsys/ns/swemls#StatisticalModel> rdf:type owl:Class .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <https://github.com/Deijdane/LLM_ontology/Architecture>
+                <https://github.com/Deijdane/LLM_ontology/Company>
+                <https://github.com/Deijdane/LLM_ontology/Dataset>
+                <https://github.com/Deijdane/LLM_ontology/Language>
+                <https://github.com/Deijdane/LLM_ontology/Task>
+                <https://github.com/Deijdane/LLM_ontology/Users>
+                <https://w3id.org/semsys/ns/swemls#StatisticalModel>
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
