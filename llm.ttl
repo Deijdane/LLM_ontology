@@ -1,10 +1,10 @@
-@prefix : <https://github.com/Deijdane/LLM_ontology> .
+@prefix : <https://github.com/Deijdane/LLM_ontology#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://github.com/Deijdane/LLM_ontology> .
+@base <https://github.com/Deijdane/LLM_ontology#> .
 
 <https://github.com/Deijdane/LLM_ontology> rdf:type owl:Ontology .
 
@@ -12,13 +12,13 @@
 #    Object Properties
 #################################################################
 
-###  https://github.com/Deijdane/LLM_ontology/devoloppedBy
-<https://github.com/Deijdane/LLM_ontology/devoloppedBy> rdf:type owl:ObjectProperty ;
-                                                        rdfs:subPropertyOf owl:topObjectProperty ;
-                                                        owl:inverseOf <https://github.com/Deijdane/LLM_ontology/hasDevolopped> ;
-                                                        rdf:type owl:FunctionalProperty ;
-                                                        rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
-                                                        rdfs:range <https://github.com/Deijdane/LLM_ontology/Company> .
+###  https://github.com/Deijdane/LLM_ontology/developedBy
+<https://github.com/Deijdane/LLM_ontology/developedBy> rdf:type owl:ObjectProperty ;
+                                                       rdfs:subPropertyOf owl:topObjectProperty ;
+                                                       owl:inverseOf <https://github.com/Deijdane/LLM_ontology/hasDeveloped> ;
+                                                       rdf:type owl:FunctionalProperty ;
+                                                       rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                       rdfs:range <https://github.com/Deijdane/LLM_ontology/Company> .
 
 
 ###  https://github.com/Deijdane/LLM_ontology/fromLanguage
@@ -38,11 +38,11 @@
                                                            rdfs:range <https://github.com/Deijdane/LLM_ontology/Architecture> .
 
 
-###  https://github.com/Deijdane/LLM_ontology/hasDevolopped
-<https://github.com/Deijdane/LLM_ontology/hasDevolopped> rdf:type owl:ObjectProperty ;
-                                                         rdfs:subPropertyOf owl:topObjectProperty ;
-                                                         rdfs:domain <https://github.com/Deijdane/LLM_ontology/Company> ;
-                                                         rdfs:range <https://github.com/Deijdane/LLM_ontology/LLM> .
+###  https://github.com/Deijdane/LLM_ontology/hasDeveloped
+<https://github.com/Deijdane/LLM_ontology/hasDeveloped> rdf:type owl:ObjectProperty ;
+                                                        rdfs:subPropertyOf owl:topObjectProperty ;
+                                                        rdfs:domain <https://github.com/Deijdane/LLM_ontology/Company> ;
+                                                        rdfs:range <https://github.com/Deijdane/LLM_ontology/LLM> .
 
 
 ###  https://github.com/Deijdane/LLM_ontology/hasTask
@@ -147,6 +147,22 @@
                                                          rdfs:range xsd:float .
 
 
+###  https://github.com/Deijdane/LLM_ontology/link_to_paper
+<https://github.com/Deijdane/LLM_ontology/link_to_paper> rdf:type owl:DatatypeProperty ;
+                                                         rdfs:subPropertyOf owl:topDataProperty ;
+                                                         rdf:type owl:FunctionalProperty ;
+                                                         rdfs:domain <https://w3id.org/semsys/ns/swemls#StatisticalModel> ;
+                                                         rdfs:range xsd:string .
+
+
+###  https://github.com/Deijdane/LLM_ontology/mmlu_score
+<https://github.com/Deijdane/LLM_ontology/mmlu_score> rdf:type owl:DatatypeProperty ;
+                                                      rdfs:subPropertyOf owl:topDataProperty ;
+                                                      rdf:type owl:FunctionalProperty ;
+                                                      rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                      rdfs:range xsd:float .
+
+
 ###  https://github.com/Deijdane/LLM_ontology/num_parameters
 <https://github.com/Deijdane/LLM_ontology/num_parameters> rdf:type owl:DatatypeProperty ;
                                                           rdfs:subPropertyOf owl:topDataProperty ;
@@ -159,7 +175,7 @@
 <https://github.com/Deijdane/LLM_ontology/release_date> rdf:type owl:DatatypeProperty ;
                                                         rdfs:subPropertyOf owl:topDataProperty ;
                                                         rdf:type owl:FunctionalProperty ;
-                                                        rdfs:domain <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                        rdfs:domain <https://w3id.org/semsys/ns/swemls#StatisticalModel> ;
                                                         rdfs:range xsd:dateTime .
 
 
@@ -183,42 +199,1260 @@
 #    Classes
 #################################################################
 
+###  https://github.com/Deijdane/LLM_ontology#ClassificationModel
+:ClassificationModel rdf:type owl:Class ;
+                     rdfs:subClassOf <https://w3id.org/semsys/ns/swemls#StatisticalModel> ;
+                     rdfs:comment "all statistical Classification models for non-language data" ;
+                     rdfs:label "ClassificationModel" .
+
+
+###  https://github.com/Deijdane/LLM_ontology#ClusteringModel
+:ClusteringModel rdf:type owl:Class ;
+                 rdfs:subClassOf <https://w3id.org/semsys/ns/swemls#StatisticalModel> ;
+                 rdfs:comment "All statistical clustering models for non-language data" ;
+                 rdfs:label "ClusteringModel" .
+
+
+###  https://github.com/Deijdane/LLM_ontology#NaturalLanguages
+:NaturalLanguages rdf:type owl:Class ;
+                  rdfs:subClassOf <https://github.com/Deijdane/LLM_ontology/Language> ;
+                  owl:disjointWith :ProgrammingLanguages .
+
+
+###  https://github.com/Deijdane/LLM_ontology#ProgrammingLanguages
+:ProgrammingLanguages rdf:type owl:Class ;
+                      rdfs:subClassOf <https://github.com/Deijdane/LLM_ontology/Language> .
+
+
+###  https://github.com/Deijdane/LLM_ontology#RegressionModel
+:RegressionModel rdf:type owl:Class ;
+                 rdfs:subClassOf <https://w3id.org/semsys/ns/swemls#StatisticalModel> ;
+                 rdfs:comment "All regression statistical models with non-language data" ;
+                 rdfs:label "RegressionModel" .
+
+
+###  https://github.com/Deijdane/LLM_ontology#SLM
+:SLM rdf:type owl:Class ;
+     owl:equivalentClass [ rdf:type owl:Restriction ;
+                           owl:onProperty <https://github.com/Deijdane/LLM_ontology/num_parameters> ;
+                           owl:maxCardinality "1000000000"^^xsd:nonNegativeInteger
+                         ] ;
+     rdfs:subClassOf <https://github.com/Deijdane/LLM_ontology/LanguageModel> ;
+     owl:disjointWith <https://github.com/Deijdane/LLM_ontology/LLM> ;
+     rdfs:comment "A subconcept of language model that involves smaller datasets and architectures." ;
+     rdfs:label "SML" .
+
+
 ###  https://github.com/Deijdane/LLM_ontology/Architecture
-<https://github.com/Deijdane/LLM_ontology/Architecture> rdf:type owl:Class .
+<https://github.com/Deijdane/LLM_ontology/Architecture> rdf:type owl:Class ;
+                                                        rdfs:comment "The structure of a large language model, describes the way the neural networks are organized"@en ;
+                                                        rdfs:label "Architecture"@en .
 
 
 ###  https://github.com/Deijdane/LLM_ontology/Company
-<https://github.com/Deijdane/LLM_ontology/Company> rdf:type owl:Class .
+<https://github.com/Deijdane/LLM_ontology/Company> rdf:type owl:Class ;
+                                                   rdfs:comment "The organization that develop and release an LLM"@en ;
+                                                   rdfs:label "Company"@en .
 
 
 ###  https://github.com/Deijdane/LLM_ontology/Dataset
-<https://github.com/Deijdane/LLM_ontology/Dataset> rdf:type owl:Class .
+<https://github.com/Deijdane/LLM_ontology/Dataset> rdf:type owl:Class ;
+                                                   rdfs:comment "Set of data used for training an LLM"@en ;
+                                                   rdfs:label "Dataset"@en .
 
 
 ###  https://github.com/Deijdane/LLM_ontology/LLM
 <https://github.com/Deijdane/LLM_ontology/LLM> rdf:type owl:Class ;
-                                               rdfs:subClassOf <https://github.com/Deijdane/LLM_ontology/Language_Model> .
+                                               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty <https://github.com/Deijdane/LLM_ontology/num_parameters> ;
+                                                                     owl:minCardinality "1000000000"^^xsd:nonNegativeInteger
+                                                                   ] ;
+                                               rdfs:subClassOf <https://github.com/Deijdane/LLM_ontology/LanguageModel> ;
+                                               rdfs:comment "A subconcept of language model that involves larger datasets and architectures."@en ;
+                                               rdfs:label "LLM"@en .
 
 
 ###  https://github.com/Deijdane/LLM_ontology/Language
-<https://github.com/Deijdane/LLM_ontology/Language> rdf:type owl:Class .
+<https://github.com/Deijdane/LLM_ontology/Language> rdf:type owl:Class ;
+                                                    rdfs:comment "Set of languages involved in the different tasks of an LLM"@en ;
+                                                    rdfs:label "Language"@en .
 
 
-###  https://github.com/Deijdane/LLM_ontology/Language_Model
-<https://github.com/Deijdane/LLM_ontology/Language_Model> rdf:type owl:Class ;
-                                                          rdfs:subClassOf <https://w3id.org/semsys/ns/swemls#StatisticalModel> .
+###  https://github.com/Deijdane/LLM_ontology/LanguageModel
+<https://github.com/Deijdane/LLM_ontology/LanguageModel> rdf:type owl:Class ;
+                                                         owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty <https://github.com/Deijdane/LLM_ontology/fromLanguage> ;
+                                                                                                      owl:someValuesFrom <https://github.com/Deijdane/LLM_ontology/Language>
+                                                                                                    ]
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty <https://github.com/Deijdane/LLM_ontology/toLanguage> ;
+                                                                                                      owl:someValuesFrom <https://github.com/Deijdane/LLM_ontology/Language>
+                                                                                                    ]
+                                                                                                  ) ;
+                                                                               rdf:type owl:Class
+                                                                             ] ;
+                                                         rdfs:subClassOf <https://w3id.org/semsys/ns/swemls#StatisticalModel> ;
+                                                         rdfs:comment "Probabilistic model used to perform natural language tasks"@en ;
+                                                         rdfs:label "LanguageModel"@en .
 
 
 ###  https://github.com/Deijdane/LLM_ontology/Task
-<https://github.com/Deijdane/LLM_ontology/Task> rdf:type owl:Class .
+<https://github.com/Deijdane/LLM_ontology/Task> rdf:type owl:Class ;
+                                                rdfs:comment "Set of capabilities of a language model"@en ;
+                                                rdfs:label "Task"@en .
 
 
 ###  https://github.com/Deijdane/LLM_ontology/Users
-<https://github.com/Deijdane/LLM_ontology/Users> rdf:type owl:Class .
+<https://github.com/Deijdane/LLM_ontology/Users> rdf:type owl:Class ;
+                                                 rdfs:comment "Set of people that make use of a LLM" ;
+                                                 rdfs:label "Users"@en .
 
 
 ###  https://w3id.org/semsys/ns/swemls#StatisticalModel
-<https://w3id.org/semsys/ns/swemls#StatisticalModel> rdf:type owl:Class .
+<https://w3id.org/semsys/ns/swemls#StatisticalModel> rdf:type owl:Class ;
+                                                     owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                  owl:onProperty <https://github.com/Deijdane/LLM_ontology/developedBy> ;
+                                                                                                  owl:someValuesFrom <https://github.com/Deijdane/LLM_ontology/Company>
+                                                                                                ]
+                                                                                                [ rdf:type owl:Restriction ;
+                                                                                                  owl:onProperty <https://github.com/Deijdane/LLM_ontology/hasArchitecture> ;
+                                                                                                  owl:someValuesFrom <https://github.com/Deijdane/LLM_ontology/Architecture>
+                                                                                                ]
+                                                                                              ) ;
+                                                                           rdf:type owl:Class
+                                                                         ] ;
+                                                     rdfs:comment "Mathematical model that represents the relationship between datapoints using probabilistic asumptions"@en ;
+                                                     rdfs:label "StatisticalModel"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://github.com/Deijdane/LLM_ontology#Java
+:Java rdf:type owl:NamedIndividual ,
+               :ProgrammingLanguages .
+
+
+###  https://github.com/Deijdane/LLM_ontology#Python
+:Python rdf:type owl:NamedIndividual ,
+                 :ProgrammingLanguages .
+
+
+###  https://github.com/Deijdane/LLM_ontology/AI21Labs
+<https://github.com/Deijdane/LLM_ontology/AI21Labs> rdf:type owl:NamedIndividual ,
+                                                             <https://github.com/Deijdane/LLM_ontology/Company> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/AlexaTM_20B
+<https://github.com/Deijdane/LLM_ontology/AlexaTM_20B> rdf:type owl:NamedIndividual ,
+                                                                <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/Amazon> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/Wikipedia> ,
+                                                                                                            <https://github.com/Deijdane/LLM_ontology/mc4Corpus> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/attention_heads> 128 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/batch_size> 2000000 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/depth> 118 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/hidden_size> 18432 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://assets.amazon.science/ee/20/3abcf2304d9b8d68da2006ff7107/alexatm-20b-few-shot-learning-using-a-large-scale-multilingual-seq2seq-model.pdf" ;
+                                                       <https://github.com/Deijdane/LLM_ontology/num_parameters> 20000000000 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/release_date> "2022-08-01T00:00:00-00:00"^^xsd:dateTime ;
+                                                       <https://github.com/Deijdane/LLM_ontology/sequence_length> 1024 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/vocable_size> 256000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/AlphaCode_41B
+<https://github.com/Deijdane/LLM_ontology/AlphaCode_41B> rdf:type owl:NamedIndividual ,
+                                                                  <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                         <https://github.com/Deijdane/LLM_ontology/attention_heads> 128 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/batch_size> 2048 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/depth> 64 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/hidden_size> 20480 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/num_parameters> 41000000000 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/sequence_length> 1536 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/vocable_size> 50000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Amazon
+<https://github.com/Deijdane/LLM_ontology/Amazon> rdf:type owl:NamedIndividual ,
+                                                           <https://github.com/Deijdane/LLM_ontology/Company> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Anthropic
+<https://github.com/Deijdane/LLM_ontology/Anthropic> rdf:type owl:NamedIndividual ,
+                                                              <https://github.com/Deijdane/LLM_ontology/Company> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Arabic
+<https://github.com/Deijdane/LLM_ontology/Arabic> rdf:type owl:NamedIndividual ,
+                                                           :NaturalLanguages .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Autoregressive_models
+<https://github.com/Deijdane/LLM_ontology/Autoregressive_models> rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/Deijdane/LLM_ontology/BERT
+<https://github.com/Deijdane/LLM_ontology/BERT> rdf:type owl:NamedIndividual ,
+                                                         <https://github.com/Deijdane/LLM_ontology/LanguageModel> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/BLOOM_176B
+<https://github.com/Deijdane/LLM_ontology/BLOOM_176B> rdf:type owl:NamedIndividual ,
+                                                               <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                      <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/BigScience> ;
+                                                      <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                              <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                              <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                              <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                      <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                      <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ,
+                                                                                                         <https://github.com/Deijdane/LLM_ontology/MachineTranslation> ;
+                                                      <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                            <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                            <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                            <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                      <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/ROOTsCorpus> ;
+                                                      <https://github.com/Deijdane/LLM_ontology/attention_heads> 96 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/batch_size> 2048 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/depth> 96 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/hidden_size> 12288 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://github.com/bigscience-workshop/bigscience/tree/master/train/tr11-176B-ml" ;
+                                                      <https://github.com/Deijdane/LLM_ontology/mmlu_score> 39.1 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/num_parameters> 176000000000 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/release_date> "2022-07-01 00:00:00"^^xsd:dateTime ;
+                                                      <https://github.com/Deijdane/LLM_ontology/sequence_length> 2048 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Baidu
+<https://github.com/Deijdane/LLM_ontology/Baidu> rdf:type owl:NamedIndividual ,
+                                                          <https://github.com/Deijdane/LLM_ontology/Company> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/BigCode
+<https://github.com/Deijdane/LLM_ontology/BigCode> rdf:type owl:NamedIndividual ,
+                                                            <https://github.com/Deijdane/LLM_ontology/Company> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/BigCodeDataset
+<https://github.com/Deijdane/LLM_ontology/BigCodeDataset> rdf:type owl:NamedIndividual ,
+                                                                   <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/BigScience
+<https://github.com/Deijdane/LLM_ontology/BigScience> rdf:type owl:NamedIndividual ,
+                                                               <https://github.com/Deijdane/LLM_ontology/Company> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/BloombergGPT_50B
+<https://github.com/Deijdane/LLM_ontology/BloombergGPT_50B> rdf:type owl:NamedIndividual ,
+                                                                     <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                            <https://github.com/Deijdane/LLM_ontology/attention_heads> 128 ;
+                                                            <https://github.com/Deijdane/LLM_ontology/batch_size> 2048 ;
+                                                            <https://github.com/Deijdane/LLM_ontology/depth> 70 ;
+                                                            <https://github.com/Deijdane/LLM_ontology/hidden_size> 14336 ;
+                                                            <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://arxiv.org/abs/2303.17564" ;
+                                                            <https://github.com/Deijdane/LLM_ontology/mmlu_score> 39.2 ;
+                                                            <https://github.com/Deijdane/LLM_ontology/num_parameters> 50000000000 ;
+                                                            <https://github.com/Deijdane/LLM_ontology/release_date> "2023-03-01 00:00:00"^^xsd:dateTime ;
+                                                            <https://github.com/Deijdane/LLM_ontology/sequence_length> 2048 ;
+                                                            <https://github.com/Deijdane/LLM_ontology/vocable_size> 250000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/CNN
+<https://github.com/Deijdane/LLM_ontology/CNN> rdf:type owl:NamedIndividual ,
+                                                        <https://github.com/Deijdane/LLM_ontology/Architecture> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/CPM_2_198B
+<https://github.com/Deijdane/LLM_ontology/CPM_2_198B> rdf:type owl:NamedIndividual ,
+                                                               <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                      <https://github.com/Deijdane/LLM_ontology/attention_heads> 64 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/batch_size> 1024 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/depth> 24 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/num_parameters> 198000000000 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/sequence_length> 1024 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/vocable_size> 250000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Chinchilla_70B
+<https://github.com/Deijdane/LLM_ontology/Chinchilla_70B> rdf:type owl:NamedIndividual ,
+                                                                   <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                          <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/DeepMind> ;
+                                                          <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                          <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/DecoderOnly> ;
+                                                          <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                          <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                          <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/MassiveTextCorpus> ;
+                                                          <https://github.com/Deijdane/LLM_ontology/attention_heads> 128 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/batch_size> 1500000 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/depth> 64 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/hidden_size> 6144 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://arxiv.org/abs/2203.15556" ;
+                                                          <https://github.com/Deijdane/LLM_ontology/mmlu_score> 67.5 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/num_parameters> 70000000000 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/release_date> "2022-03-01 00:00:00"^^xsd:dateTime ;
+                                                          <https://github.com/Deijdane/LLM_ontology/sequence_length> 2048 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/vocable_size> 8000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Chinese
+<https://github.com/Deijdane/LLM_ontology/Chinese> rdf:type owl:NamedIndividual ,
+                                                            :NaturalLanguages .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Claude
+<https://github.com/Deijdane/LLM_ontology/Claude> rdf:type owl:NamedIndividual ,
+                                                           <https://github.com/Deijdane/LLM_ontology/LLM> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Claude2
+<https://github.com/Deijdane/LLM_ontology/Claude2> rdf:type owl:NamedIndividual ,
+                                                            <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://www-files.anthropic.com/production/images/Model-Card-Claude-2.pdf" ;
+                                                   <https://github.com/Deijdane/LLM_ontology/mmlu_score> 78.5 ;
+                                                   <https://github.com/Deijdane/LLM_ontology/release_date> "2023-07-01 00:00:00"^^xsd:dateTime .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Claude3
+<https://github.com/Deijdane/LLM_ontology/Claude3> rdf:type owl:NamedIndividual ,
+                                                            <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://www.anthropic.com/claude-3-model-card" ;
+                                                   <https://github.com/Deijdane/LLM_ontology/mmlu_score> 86.8 ;
+                                                   <https://github.com/Deijdane/LLM_ontology/release_date> "2024-03-01 00:00:00"^^xsd:dateTime .
+
+
+###  https://github.com/Deijdane/LLM_ontology/CodeGen_16B
+<https://github.com/Deijdane/LLM_ontology/CodeGen_16B> rdf:type owl:NamedIndividual ,
+                                                                <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/Salesforce> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/CodeGeneration> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/Python> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/BigCodeDataset> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/attention_heads> 96 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/batch_size> 2000000 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/depth> 70 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/hidden_size> 12288 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://arxiv.org/abs/2203.13474" ;
+                                                       <https://github.com/Deijdane/LLM_ontology/num_parameters> 16000000000 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/release_date> "2022-03-30 00:00:00"^^xsd:dateTime ;
+                                                       <https://github.com/Deijdane/LLM_ontology/sequence_length> 2048 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/vocable_size> 32000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/CodeGeneration
+<https://github.com/Deijdane/LLM_ontology/CodeGeneration> rdf:type owl:NamedIndividual ,
+                                                                   <https://github.com/Deijdane/LLM_ontology/Task> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/CodeT5_16B
+<https://github.com/Deijdane/LLM_ontology/CodeT5_16B> rdf:type owl:NamedIndividual ,
+                                                               <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                      <https://github.com/Deijdane/LLM_ontology/attention_heads> 112 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/batch_size> 512 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/depth> 70 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/hidden_size> 14336 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://arxiv.org/abs/2109.00859" ;
+                                                      <https://github.com/Deijdane/LLM_ontology/num_parameters> 16000000000 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/release_date> "2022-03-30 00:00:00"^^xsd:dateTime ;
+                                                      <https://github.com/Deijdane/LLM_ontology/sequence_length> 8000 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/vocable_size> 250000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Codex_12B
+<https://github.com/Deijdane/LLM_ontology/Codex_12B> rdf:type owl:NamedIndividual ,
+                                                              <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/OpenAI> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/CodeGeneration> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/Python> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/GitHubCode> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/attention_heads> 96 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/depth> 96 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hidden_size> 12288 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://arxiv.org/abs/2107.03374" ;
+                                                     <https://github.com/Deijdane/LLM_ontology/num_parameters> 12000000000 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/release_date> "2021-08-01 00:00:00"^^xsd:dateTime .
+
+
+###  https://github.com/Deijdane/LLM_ontology/ColossalCleanCrawl
+<https://github.com/Deijdane/LLM_ontology/ColossalCleanCrawl> rdf:type owl:NamedIndividual ,
+                                                                       <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/CommonCrawl
+<https://github.com/Deijdane/LLM_ontology/CommonCrawl> rdf:type owl:NamedIndividual ,
+                                                                <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/ConversationalAI
+<https://github.com/Deijdane/LLM_ontology/ConversationalAI> rdf:type owl:NamedIndividual ,
+                                                                     <https://github.com/Deijdane/LLM_ontology/Task> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/DecoderOnly
+<https://github.com/Deijdane/LLM_ontology/DecoderOnly> rdf:type owl:NamedIndividual ,
+                                                                <https://github.com/Deijdane/LLM_ontology/Architecture> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/DeepMind
+<https://github.com/Deijdane/LLM_ontology/DeepMind> rdf:type owl:NamedIndividual ,
+                                                             <https://github.com/Deijdane/LLM_ontology/Company> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/ERNIE_3.0_10B
+<https://github.com/Deijdane/LLM_ontology/ERNIE_3.0_10B> rdf:type owl:NamedIndividual ,
+                                                                  <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                         <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/Baidu> ;
+                                                         <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/Chinese> ;
+                                                         <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                         <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                         <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/Chinese> ;
+                                                         <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/LargeChineseCorpus> ;
+                                                         <https://github.com/Deijdane/LLM_ontology/attention_heads> 64 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/batch_size> 6144 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/depth> 48 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/hidden_size> 4096 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/num_parameters> 10000000000 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/sequence_length> 512 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/ERNIE_3.0_Titan_260B
+<https://github.com/Deijdane/LLM_ontology/ERNIE_3.0_Titan_260B> rdf:type owl:NamedIndividual ,
+                                                                         <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                                <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/Baidu> ;
+                                                                <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/Chinese> ;
+                                                                <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                                <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                                <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/Chinese> ;
+                                                                <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/LargeChineseCorpus> ;
+                                                                <https://github.com/Deijdane/LLM_ontology/attention_heads> 192 ;
+                                                                <https://github.com/Deijdane/LLM_ontology/depth> 48 ;
+                                                                <https://github.com/Deijdane/LLM_ontology/hidden_size> 12288 ;
+                                                                <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://arxiv.org/abs/2112.12731" ;
+                                                                <https://github.com/Deijdane/LLM_ontology/num_parameters> 260000000000 ;
+                                                                <https://github.com/Deijdane/LLM_ontology/release_date> "2021-12-01 00:00:00"^^xsd:dateTime ;
+                                                                <https://github.com/Deijdane/LLM_ontology/sequence_length> 512 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Employees
+<https://github.com/Deijdane/LLM_ontology/Employees> rdf:type owl:NamedIndividual ,
+                                                              <https://github.com/Deijdane/LLM_ontology/Users> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/EncoderDecoder
+<https://github.com/Deijdane/LLM_ontology/EncoderDecoder> rdf:type owl:NamedIndividual ,
+                                                                   <https://github.com/Deijdane/LLM_ontology/Architecture> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/English
+<https://github.com/Deijdane/LLM_ontology/English> rdf:type owl:NamedIndividual ,
+                                                            :NaturalLanguages .
+
+
+###  https://github.com/Deijdane/LLM_ontology/FewShotLearning
+<https://github.com/Deijdane/LLM_ontology/FewShotLearning> rdf:type owl:NamedIndividual ,
+                                                                    <https://github.com/Deijdane/LLM_ontology/Task> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/French
+<https://github.com/Deijdane/LLM_ontology/French> rdf:type owl:NamedIndividual ,
+                                                           :NaturalLanguages .
+
+
+###  https://github.com/Deijdane/LLM_ontology/GLM_130B
+<https://github.com/Deijdane/LLM_ontology/GLM_130B> rdf:type owl:NamedIndividual ,
+                                                             <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                    <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/TsinghuaUniversity> ;
+                                                    <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/Chinese> ,
+                                                                                                            <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                    <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                    <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                    <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/Chinese> ,
+                                                                                                          <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                    <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/LargeMultilingualCorpus> ;
+                                                    <https://github.com/Deijdane/LLM_ontology/attention_heads> 64 ;
+                                                    <https://github.com/Deijdane/LLM_ontology/batch_size> 4224 ;
+                                                    <https://github.com/Deijdane/LLM_ontology/depth> 64 ;
+                                                    <https://github.com/Deijdane/LLM_ontology/hidden_size> 18432 ;
+                                                    <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://arxiv.org/abs/2210.02414" ;
+                                                    <https://github.com/Deijdane/LLM_ontology/num_parameters> 130000000000 ;
+                                                    <https://github.com/Deijdane/LLM_ontology/release_date> "2022-08-01 00:00:00"^^xsd:dateTime ;
+                                                    <https://github.com/Deijdane/LLM_ontology/sequence_length> 2048 ;
+                                                    <https://github.com/Deijdane/LLM_ontology/vocable_size> 32000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/GLaM_1.2T
+<https://github.com/Deijdane/LLM_ontology/GLaM_1.2T> rdf:type owl:NamedIndividual ,
+                                                              <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/Google> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/MixtureOfExperts> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/MassiveWebCorpus> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/attention_heads> 80 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/batch_size> 1000000 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/depth> 96 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hidden_size> 10240 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://arxiv.org/abs/2112.06905" ;
+                                                     <https://github.com/Deijdane/LLM_ontology/num_parameters> 1200000000000 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/release_date> "2021-12-01 00:00:00"^^xsd:dateTime ;
+                                                     <https://github.com/Deijdane/LLM_ontology/sequence_length> 1024 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/vocable_size> 50000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/GPT
+<https://github.com/Deijdane/LLM_ontology/GPT> rdf:type owl:NamedIndividual ,
+                                                        <https://github.com/Deijdane/LLM_ontology/LanguageModel> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/GPT-2
+<https://github.com/Deijdane/LLM_ontology/GPT-2> rdf:type owl:NamedIndividual ,
+                                                          <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/OpenAI> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/FewShotLearning> ,
+                                                                                                    <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/CommonCrawl> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://openai.com/blog/better-language-models/" ;
+                                                 <https://github.com/Deijdane/LLM_ontology/mmlu_score> 32.4 ;
+                                                 <https://github.com/Deijdane/LLM_ontology/release_date> "2019-02-01 00:00:00"^^xsd:dateTime .
+
+
+###  https://github.com/Deijdane/LLM_ontology/GPT-3
+<https://github.com/Deijdane/LLM_ontology/GPT-3> rdf:type owl:NamedIndividual ,
+                                                          <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/OpenAI> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                         <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                         <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                         <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/FewShotLearning> ,
+                                                                                                    <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                       <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                       <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                       <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/CommonCrawl> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://arxiv.org/abs/2005.14165" ;
+                                                 <https://github.com/Deijdane/LLM_ontology/mmlu_score> 43.9 ;
+                                                 <https://github.com/Deijdane/LLM_ontology/release_date> "2020-05-01 00:00:00"^^xsd:dateTime .
+
+
+###  https://github.com/Deijdane/LLM_ontology/GPT-3.5
+<https://github.com/Deijdane/LLM_ontology/GPT-3.5> rdf:type owl:NamedIndividual ,
+                                                            <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/OpenAI> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/FewShotLearning> ,
+                                                                                                      <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                         <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                         <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                         <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/CommonCrawl> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://openai.com/blog/chatgpt" ;
+                                                   <https://github.com/Deijdane/LLM_ontology/mmlu_score> 70 ;
+                                                   <https://github.com/Deijdane/LLM_ontology/release_date> "2022-11-01 00:00:00"^^xsd:dateTime .
+
+
+###  https://github.com/Deijdane/LLM_ontology/GPT-4
+<https://github.com/Deijdane/LLM_ontology/GPT-4> rdf:type owl:NamedIndividual ,
+                                                          <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/OpenAI> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                         <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                         <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                         <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/FewShotLearning> ,
+                                                                                                    <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                       <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                       <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                       <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/CommonCrawl> ;
+                                                 <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://cdn.openai.com/papers/gpt-4.pdf" ;
+                                                 <https://github.com/Deijdane/LLM_ontology/mmlu_score> 86.4 ;
+                                                 <https://github.com/Deijdane/LLM_ontology/release_date> "2023-03-01 00:00:00"^^xsd:dateTime .
+
+
+###  https://github.com/Deijdane/LLM_ontology/GPT-4o
+<https://github.com/Deijdane/LLM_ontology/GPT-4o> rdf:type owl:NamedIndividual ,
+                                                           <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/OpenAI> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                          <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                          <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                          <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/FewShotLearning> ,
+                                                                                                     <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                        <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                        <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                        <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/CommonCrawl> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://openai.com/index/gpt-4o-system-card/" ;
+                                                  <https://github.com/Deijdane/LLM_ontology/mmlu_score> 88.7 ;
+                                                  <https://github.com/Deijdane/LLM_ontology/release_date> "2024-05-01 00:00:00"^^xsd:dateTime .
+
+
+###  https://github.com/Deijdane/LLM_ontology/GPT3_175B
+<https://github.com/Deijdane/LLM_ontology/GPT3_175B> rdf:type owl:NamedIndividual ,
+                                                              <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/OpenAI> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/FewShotLearning> ,
+                                                                                                        <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/CommonCrawl> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/attention_heads> 96 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/batch_size> 32000 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/depth> 96 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hidden_size> 12288 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/num_parameters> 175000000000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/GPT_NeoX_20B
+<https://github.com/Deijdane/LLM_ontology/GPT_NeoX_20B> rdf:type owl:NamedIndividual ,
+                                                                 <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                        <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/OpenAI> ;
+                                                        <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                                <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                                <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                                <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                        <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                        <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/FewShotLearning> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                        <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                              <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                              <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                              <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                        <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/CommonCrawl> ;
+                                                        <https://github.com/Deijdane/LLM_ontology/attention_heads> 64 ;
+                                                        <https://github.com/Deijdane/LLM_ontology/batch_size> 1538 ;
+                                                        <https://github.com/Deijdane/LLM_ontology/depth> 44 ;
+                                                        <https://github.com/Deijdane/LLM_ontology/hidden_size> 6144 ;
+                                                        <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://github.com/EleutherAI/gpt-neox" ;
+                                                        <https://github.com/Deijdane/LLM_ontology/num_parameters> 20000000000 ;
+                                                        <https://github.com/Deijdane/LLM_ontology/release_date> "2022-02-01 00:00:00"^^xsd:dateTime ;
+                                                        <https://github.com/Deijdane/LLM_ontology/sequence_length> 2048 ;
+                                                        <https://github.com/Deijdane/LLM_ontology/vocable_size> 50000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Galactica_120B
+<https://github.com/Deijdane/LLM_ontology/Galactica_120B> rdf:type owl:NamedIndividual ,
+                                                                   <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                          <https://github.com/Deijdane/LLM_ontology/attention_heads> 112 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/batch_size> 2000000 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/depth> 70 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/hidden_size> 14336 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://galactica.org/static/paper.pdf" ;
+                                                          <https://github.com/Deijdane/LLM_ontology/mmlu_score> 52.6 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/num_parameters> 120000000000 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/release_date> "2022-11-01 00:00:00"^^xsd:dateTime ;
+                                                          <https://github.com/Deijdane/LLM_ontology/sequence_length> 2048 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/vocable_size> 250000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks
+<https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> rdf:type owl:NamedIndividual ,
+                                                                    <https://github.com/Deijdane/LLM_ontology/Task> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Generation
+<https://github.com/Deijdane/LLM_ontology/Generation> rdf:type owl:NamedIndividual ,
+                                                               <https://github.com/Deijdane/LLM_ontology/Task> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/GitHubCode
+<https://github.com/Deijdane/LLM_ontology/GitHubCode> rdf:type owl:NamedIndividual ,
+                                                               <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Google
+<https://github.com/Deijdane/LLM_ontology/Google> rdf:type owl:NamedIndividual ,
+                                                           <https://github.com/Deijdane/LLM_ontology/Company> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Gopher_280B
+<https://github.com/Deijdane/LLM_ontology/Gopher_280B> rdf:type owl:NamedIndividual ,
+                                                                <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/DeepMind> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/MassiveTextCorpus> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/attention_heads> 128 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/batch_size> 3000000 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/depth> 80 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/hidden_size> 16384 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://arxiv.org/abs/2112.11446" ;
+                                                       <https://github.com/Deijdane/LLM_ontology/mmlu_score> 60 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/num_parameters> 280000000000 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/release_date> "2021-12-01 00:00:00"^^xsd:dateTime ;
+                                                       <https://github.com/Deijdane/LLM_ontology/sequence_length> 2048 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/vocable_size> 32000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Huawei
+<https://github.com/Deijdane/LLM_ontology/Huawei> rdf:type owl:NamedIndividual ,
+                                                           <https://github.com/Deijdane/LLM_ontology/Company> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/HyperCLOVA_82B
+<https://github.com/Deijdane/LLM_ontology/HyperCLOVA_82B> rdf:type owl:NamedIndividual ,
+                                                                   <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                          <https://github.com/Deijdane/LLM_ontology/attention_heads> 80 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/batch_size> 2024 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/depth> 64 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/hidden_size> 10240 ;
+                                                          <https://github.com/Deijdane/LLM_ontology/num_parameters> 82000000000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Italian
+<https://github.com/Deijdane/LLM_ontology/Italian> rdf:type owl:NamedIndividual ,
+                                                            :NaturalLanguages .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Java
+<https://github.com/Deijdane/LLM_ontology/Java> rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Jurassic_1_178B
+<https://github.com/Deijdane/LLM_ontology/Jurassic_1_178B> rdf:type owl:NamedIndividual ,
+                                                                    <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                           <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/AI21Labs> ;
+                                                           <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                           <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                           <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                           <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                           <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/LargeWebCorpus> ;
+                                                           <https://github.com/Deijdane/LLM_ontology/attention_heads> 96 ;
+                                                           <https://github.com/Deijdane/LLM_ontology/batch_size> 3200000 ;
+                                                           <https://github.com/Deijdane/LLM_ontology/depth> 76 ;
+                                                           <https://github.com/Deijdane/LLM_ontology/hidden_size> 13824 ;
+                                                           <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://www.ai21.com/blog/announcing-ai21-studio-and-jurassic-1" ;
+                                                           <https://github.com/Deijdane/LLM_ontology/num_parameters> 178000000000 ;
+                                                           <https://github.com/Deijdane/LLM_ontology/release_date> "2021-08-01 00:00:00"^^xsd:dateTime ;
+                                                           <https://github.com/Deijdane/LLM_ontology/sequence_length> 2048 ;
+                                                           <https://github.com/Deijdane/LLM_ontology/vocable_size> 256000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/LLaMA_2_70B
+<https://github.com/Deijdane/LLM_ontology/LLaMA_2_70B> rdf:type owl:NamedIndividual ,
+                                                                <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/Meta> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                               <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                               <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                               <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/DecoderOnly> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/CommonCrawl> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/attention_heads> 48 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/depth> 40 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/hidden_size> 6144 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/num_parameters> 70000000000 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/vocable_size> 49000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/LLaMA_65B
+<https://github.com/Deijdane/LLM_ontology/LLaMA_65B> rdf:type owl:NamedIndividual ,
+                                                              <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/Meta> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/DecoderOnly> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/CommonCrawl> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/attention_heads> 24 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/batch_size> 4000000 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/depth> 34 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hidden_size> 5120 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/num_parameters> 65000000000 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/sequence_length> 2048 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/LaMDA_137B
+<https://github.com/Deijdane/LLM_ontology/LaMDA_137B> rdf:type owl:NamedIndividual ,
+                                                               <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                      <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/Meta> ;
+                                                      <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                              <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                              <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                              <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                      <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/DecoderOnly> ;
+                                                      <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                      <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                            <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                            <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                            <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                      <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/CommonCrawl> ;
+                                                      <https://github.com/Deijdane/LLM_ontology/attention_heads> 128 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/batch_size> 256000 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/depth> 64 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/hidden_size> 32768 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://arxiv.org/abs/2201.08239" ;
+                                                      <https://github.com/Deijdane/LLM_ontology/num_parameters> 137000000000 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/release_date> "2021-06-01 00:00:00"^^xsd:dateTime ;
+                                                      <https://github.com/Deijdane/LLM_ontology/sequence_length> 1024 ;
+                                                      <https://github.com/Deijdane/LLM_ontology/vocable_size> 256000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/LargeChineseCorpus
+<https://github.com/Deijdane/LLM_ontology/LargeChineseCorpus> rdf:type owl:NamedIndividual ,
+                                                                       <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/LargeMultilingualCorpus
+<https://github.com/Deijdane/LLM_ontology/LargeMultilingualCorpus> rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/Deijdane/LLM_ontology/LargeTextDataset
+<https://github.com/Deijdane/LLM_ontology/LargeTextDataset> rdf:type owl:NamedIndividual ,
+                                                                     <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/LargeWebCorpus
+<https://github.com/Deijdane/LLM_ontology/LargeWebCorpus> rdf:type owl:NamedIndividual ,
+                                                                   <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Llama
+<https://github.com/Deijdane/LLM_ontology/Llama> rdf:type owl:NamedIndividual ,
+                                                          <https://github.com/Deijdane/LLM_ontology/LanguageModel> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/MT_NLG_530B
+<https://github.com/Deijdane/LLM_ontology/MT_NLG_530B> rdf:type owl:NamedIndividual ,
+                                                                <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/attention_heads> 128 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/batch_size> 1920 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/depth> 64 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/hidden_size> 8192 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://arxiv.org/abs/2201.11990" ;
+                                                       <https://github.com/Deijdane/LLM_ontology/num_parameters> 530000000000 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/release_date> "2021-10-01 00:00:00"^^xsd:dateTime ;
+                                                       <https://github.com/Deijdane/LLM_ontology/sequence_length> 2048 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/vocable_size> 32000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/MachineTranslation
+<https://github.com/Deijdane/LLM_ontology/MachineTranslation> rdf:type owl:NamedIndividual ,
+                                                                       <https://github.com/Deijdane/LLM_ontology/Task> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Masked_language_models
+<https://github.com/Deijdane/LLM_ontology/Masked_language_models> rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/Deijdane/LLM_ontology/MassiveTextCorpus
+<https://github.com/Deijdane/LLM_ontology/MassiveTextCorpus> rdf:type owl:NamedIndividual ,
+                                                                      <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/MassiveWebCorpus
+<https://github.com/Deijdane/LLM_ontology/MassiveWebCorpus> rdf:type owl:NamedIndividual ,
+                                                                     <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Meta
+<https://github.com/Deijdane/LLM_ontology/Meta> rdf:type owl:NamedIndividual ,
+                                                         <https://github.com/Deijdane/LLM_ontology/Company> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Microsoft
+<https://github.com/Deijdane/LLM_ontology/Microsoft> rdf:type owl:NamedIndividual ,
+                                                              <https://github.com/Deijdane/LLM_ontology/Company> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/MixtureOfExperts
+<https://github.com/Deijdane/LLM_ontology/MixtureOfExperts> rdf:type owl:NamedIndividual ,
+                                                                     <https://github.com/Deijdane/LLM_ontology/Architecture> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/MultilingualTextToText
+<https://github.com/Deijdane/LLM_ontology/MultilingualTextToText> rdf:type owl:NamedIndividual ,
+                                                                           <https://github.com/Deijdane/LLM_ontology/Task> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Nvidia
+<https://github.com/Deijdane/LLM_ontology/Nvidia> rdf:type owl:NamedIndividual ,
+                                                           <https://github.com/Deijdane/LLM_ontology/Company> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/OpenAI
+<https://github.com/Deijdane/LLM_ontology/OpenAI> rdf:type owl:NamedIndividual ,
+                                                           <https://github.com/Deijdane/LLM_ontology/Company> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/OpenAITextCorpus
+<https://github.com/Deijdane/LLM_ontology/OpenAITextCorpus> rdf:type owl:NamedIndividual ,
+                                                                     <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/OpenWebText
+<https://github.com/Deijdane/LLM_ontology/OpenWebText> rdf:type owl:NamedIndividual ,
+                                                                <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/PaLM_540B
+<https://github.com/Deijdane/LLM_ontology/PaLM_540B> rdf:type owl:NamedIndividual ,
+                                                              <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/Google> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/MassiveWebCorpus> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/attention_heads> 64 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/batch_size> 2048 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/depth> 80 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hidden_size> 8192 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/num_parameters> 540000000000 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/sequence_length> 2048 ;
+                                                     <https://github.com/Deijdane/LLM_ontology/vocable_size> 32000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/PanGu_Σ_1085B
+<https://github.com/Deijdane/LLM_ontology/PanGu_Σ_1085B> rdf:type owl:NamedIndividual ,
+                                                                  <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                         <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/Huawei> ;
+                                                         <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/Chinese> ;
+                                                         <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                         <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                         <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/Chinese> ;
+                                                         <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/WuDaoCorpus> ;
+                                                         <https://github.com/Deijdane/LLM_ontology/attention_heads> 64 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/batch_size> 512 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/depth> 40 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/hidden_size> 12288 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://www.huaweicentral.com/huawei-cloud-unveils-pangu-large-model-5-0/" ;
+                                                         <https://github.com/Deijdane/LLM_ontology/num_parameters> 1085000000000 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/release_date> "2024-06-01 00:00:00"^^xsd:dateTime ;
+                                                         <https://github.com/Deijdane/LLM_ontology/sequence_length> 1024 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/vocable_size> 32000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/PanGu_α_200B
+<https://github.com/Deijdane/LLM_ontology/PanGu_α_200B> rdf:type owl:NamedIndividual ,
+                                                                 <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                        <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/Huawei> ;
+                                                        <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/Chinese> ;
+                                                        <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                        <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                        <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/Chinese> ;
+                                                        <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/WuDaoCorpus> ;
+                                                        <https://github.com/Deijdane/LLM_ontology/attention_heads> 128 ;
+                                                        <https://github.com/Deijdane/LLM_ontology/depth> 64 ;
+                                                        <https://github.com/Deijdane/LLM_ontology/hidden_size> 16384 ;
+                                                        <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://arxiv.org/abs/2312.17276" ;
+                                                        <https://github.com/Deijdane/LLM_ontology/num_parameters> 200000000000 ;
+                                                        <https://github.com/Deijdane/LLM_ontology/release_date> "2023-12-01 00:00:00"^^xsd:dateTime ;
+                                                        <https://github.com/Deijdane/LLM_ontology/sequence_length> 1024 ;
+                                                        <https://github.com/Deijdane/LLM_ontology/vocable_size> 40000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Python
+<https://github.com/Deijdane/LLM_ontology/Python> rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/Deijdane/LLM_ontology/RNN
+<https://github.com/Deijdane/LLM_ontology/RNN> rdf:type owl:NamedIndividual ,
+                                                        <https://github.com/Deijdane/LLM_ontology/Architecture> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/ROOTsCorpus
+<https://github.com/Deijdane/LLM_ontology/ROOTsCorpus> rdf:type owl:NamedIndividual ,
+                                                                <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Salesforce
+<https://github.com/Deijdane/LLM_ontology/Salesforce> rdf:type owl:NamedIndividual ,
+                                                               <https://github.com/Deijdane/LLM_ontology/Company> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Seq2seq
+<https://github.com/Deijdane/LLM_ontology/Seq2seq> rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Spanish
+<https://github.com/Deijdane/LLM_ontology/Spanish> rdf:type owl:NamedIndividual ,
+                                                            :NaturalLanguages .
+
+
+###  https://github.com/Deijdane/LLM_ontology/StarCoder_15.5B
+<https://github.com/Deijdane/LLM_ontology/StarCoder_15.5B> rdf:type owl:NamedIndividual ,
+                                                                    <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                           <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/BigCode> ;
+                                                           <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                           <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/TransformerBased> ;
+                                                           <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/CodeGeneration> ;
+                                                           <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/Java> ,
+                                                                                                                 <https://github.com/Deijdane/LLM_ontology/Python> ;
+                                                           <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/TheStack> ;
+                                                           <https://github.com/Deijdane/LLM_ontology/attention_heads> 64 ;
+                                                           <https://github.com/Deijdane/LLM_ontology/batch_size> 4000000 ;
+                                                           <https://github.com/Deijdane/LLM_ontology/depth> 64 ;
+                                                           <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://drive.google.com/file/d/1cN-b9GnWtHzQRoE7M7gAEyivY0kl4BYs/view" ;
+                                                           <https://github.com/Deijdane/LLM_ontology/num_parameters> 15500000000 ;
+                                                           <https://github.com/Deijdane/LLM_ontology/release_date> "2023-05-01 00:00:00"^^xsd:dateTime ;
+                                                           <https://github.com/Deijdane/LLM_ontology/sequence_length> 4000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Students
+<https://github.com/Deijdane/LLM_ontology/Students> rdf:type owl:NamedIndividual ,
+                                                             <https://github.com/Deijdane/LLM_ontology/Users> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Summarization
+<https://github.com/Deijdane/LLM_ontology/Summarization> rdf:type owl:NamedIndividual ,
+                                                                  <https://github.com/Deijdane/LLM_ontology/Task> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/T5
+<https://github.com/Deijdane/LLM_ontology/T5> rdf:type owl:NamedIndividual ,
+                                                       <https://github.com/Deijdane/LLM_ontology/LanguageModel> ;
+                                              <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://arxiv.org/abs/1910.10683" ;
+                                              <https://github.com/Deijdane/LLM_ontology/release_date> "2019-10-01 00:00:00"^^xsd:dateTime .
+
+
+###  https://github.com/Deijdane/LLM_ontology/T5-11B
+<https://github.com/Deijdane/LLM_ontology/T5-11B> rdf:type owl:NamedIndividual ,
+                                                           <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/Google> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/EncoderDecoder> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/TextToText> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/ColossalCleanCrawl> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/num_parameters> 11000000000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/T5_11B
+<https://github.com/Deijdane/LLM_ontology/T5_11B> rdf:type owl:NamedIndividual ,
+                                                           <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/Google> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/EncoderDecoder> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/TextToText> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                        <https://github.com/Deijdane/LLM_ontology/French> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/ColossalCleanCrawl> ;
+                                                  <https://github.com/Deijdane/LLM_ontology/attention_heads> 128 ;
+                                                  <https://github.com/Deijdane/LLM_ontology/batch_size> 200000 ;
+                                                  <https://github.com/Deijdane/LLM_ontology/depth> 24 ;
+                                                  <https://github.com/Deijdane/LLM_ontology/hidden_size> 1024 ;
+                                                  <https://github.com/Deijdane/LLM_ontology/num_parameters> 11000000000 ;
+                                                  <https://github.com/Deijdane/LLM_ontology/sequence_length> 512 ;
+                                                  <https://github.com/Deijdane/LLM_ontology/vocable_size> 32000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Teachers
+<https://github.com/Deijdane/LLM_ontology/Teachers> rdf:type owl:NamedIndividual ,
+                                                             <https://github.com/Deijdane/LLM_ontology/Users> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/TextToText
+<https://github.com/Deijdane/LLM_ontology/TextToText> rdf:type owl:NamedIndividual ,
+                                                               <https://github.com/Deijdane/LLM_ontology/Task> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/TheStack
+<https://github.com/Deijdane/LLM_ontology/TheStack> rdf:type owl:NamedIndividual ,
+                                                             <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/TransformerBased
+<https://github.com/Deijdane/LLM_ontology/TransformerBased> rdf:type owl:NamedIndividual ,
+                                                                     <https://github.com/Deijdane/LLM_ontology/Architecture> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/TsinghuaUniversity
+<https://github.com/Deijdane/LLM_ontology/TsinghuaUniversity> rdf:type owl:NamedIndividual ,
+                                                                       <https://github.com/Deijdane/LLM_ontology/Company> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/UL2_20B
+<https://github.com/Deijdane/LLM_ontology/UL2_20B> rdf:type owl:NamedIndividual ,
+                                                            <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/attention_heads> 64 ;
+                                                   <https://github.com/Deijdane/LLM_ontology/batch_size> 1024 ;
+                                                   <https://github.com/Deijdane/LLM_ontology/depth> 16 ;
+                                                   <https://github.com/Deijdane/LLM_ontology/hidden_size> 4096 ;
+                                                   <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://arxiv.org/abs/2205.05131" ;
+                                                   <https://github.com/Deijdane/LLM_ontology/mmlu_score> 39.2 ;
+                                                   <https://github.com/Deijdane/LLM_ontology/num_parameters> 20000000000 ;
+                                                   <https://github.com/Deijdane/LLM_ontology/release_date> "2022-05-01 00:00:00"^^xsd:dateTime ;
+                                                   <https://github.com/Deijdane/LLM_ontology/sequence_length> 1024 ;
+                                                   <https://github.com/Deijdane/LLM_ontology/vocable_size> 32000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/U_PaLM_540B
+<https://github.com/Deijdane/LLM_ontology/U_PaLM_540B> rdf:type owl:NamedIndividual ,
+                                                                <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                       <https://github.com/Deijdane/LLM_ontology/attention_heads> 128 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/batch_size> 32 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/depth> 80 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/hidden_size> 8192 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/num_parameters> 540000000000 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/sequence_length> 2048 ;
+                                                       <https://github.com/Deijdane/LLM_ontology/vocable_size> 150000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Wikipedia
+<https://github.com/Deijdane/LLM_ontology/Wikipedia> rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/Deijdane/LLM_ontology/WuDaoCorpus
+<https://github.com/Deijdane/LLM_ontology/WuDaoCorpus> rdf:type owl:NamedIndividual ,
+                                                                <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Xuan_Yuan_2.0_176B
+<https://github.com/Deijdane/LLM_ontology/Xuan_Yuan_2.0_176B> rdf:type owl:NamedIndividual ,
+                                                                       <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                              <https://github.com/Deijdane/LLM_ontology/attention_heads> 64 ;
+                                                              <https://github.com/Deijdane/LLM_ontology/batch_size> 2048 ;
+                                                              <https://github.com/Deijdane/LLM_ontology/depth> 70 ;
+                                                              <https://github.com/Deijdane/LLM_ontology/hidden_size> 7680 ;
+                                                              <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://arxiv.org/abs/2311.15786" ;
+                                                              <https://github.com/Deijdane/LLM_ontology/num_parameters> 176000000000 ;
+                                                              <https://github.com/Deijdane/LLM_ontology/release_date> "2023-11-01 00:00:00"^^xsd:dateTime ;
+                                                              <https://github.com/Deijdane/LLM_ontology/sequence_length> 1024 ;
+                                                              <https://github.com/Deijdane/LLM_ontology/vocable_size> 131000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/Yuan_1.0_245B
+<https://github.com/Deijdane/LLM_ontology/Yuan_1.0_245B> rdf:type owl:NamedIndividual ,
+                                                                  <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                         <https://github.com/Deijdane/LLM_ontology/attention_heads> 128 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/batch_size> 10000000 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/depth> 76 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/hidden_size> 16384 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/num_parameters> 245000000000 ;
+                                                         <https://github.com/Deijdane/LLM_ontology/sequence_length> 2048 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/gemini-1.5-flash
+<https://github.com/Deijdane/LLM_ontology/gemini-1.5-flash> rdf:type owl:NamedIndividual ,
+                                                                     <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                            <https://github.com/Deijdane/LLM_ontology/link_to_paper> "https://goo.gle/GeminiV1-5" ;
+                                                            <https://github.com/Deijdane/LLM_ontology/mmlu_score> 78.9 ;
+                                                            <https://github.com/Deijdane/LLM_ontology/release_date> "2024-05-01 00:00:00"^^xsd:dateTime .
+
+
+###  https://github.com/Deijdane/LLM_ontology/llama2-7b
+<https://github.com/Deijdane/LLM_ontology/llama2-7b> rdf:type owl:NamedIndividual ,
+                                                              <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/Meta> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/DecoderOnly> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/CommonCrawl> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/num_parameters> 7000000000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/llama3-8b
+<https://github.com/Deijdane/LLM_ontology/llama3-8b> rdf:type owl:NamedIndividual ,
+                                                              <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/Meta> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                             <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/DecoderOnly> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/GeneralNLPTasks> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/CommonCrawl> ;
+                                                     <https://github.com/Deijdane/LLM_ontology/num_parameters> 8000000000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/mC4
+<https://github.com/Deijdane/LLM_ontology/mC4> rdf:type owl:NamedIndividual ,
+                                                        <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/mT5_13B
+<https://github.com/Deijdane/LLM_ontology/mT5_13B> rdf:type owl:NamedIndividual ,
+                                                            <https://github.com/Deijdane/LLM_ontology/LLM> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/developedBy> <https://github.com/Deijdane/LLM_ontology/Google> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/fromLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                           <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/hasArchitecture> <https://github.com/Deijdane/LLM_ontology/EncoderDecoder> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/hasTask> <https://github.com/Deijdane/LLM_ontology/MultilingualTextToText> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/toLanguage> <https://github.com/Deijdane/LLM_ontology/English> ,
+                                                                                                         <https://github.com/Deijdane/LLM_ontology/French> ,
+                                                                                                         <https://github.com/Deijdane/LLM_ontology/Italian> ,
+                                                                                                         <https://github.com/Deijdane/LLM_ontology/Spanish> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/trainedOn> <https://github.com/Deijdane/LLM_ontology/mC4> ;
+                                                   <https://github.com/Deijdane/LLM_ontology/batch_size> 1024 ;
+                                                   <https://github.com/Deijdane/LLM_ontology/num_parameters> 13000000000 ;
+                                                   <https://github.com/Deijdane/LLM_ontology/sequence_length> 1024 ;
+                                                   <https://github.com/Deijdane/LLM_ontology/vocable_size> 250000 .
+
+
+###  https://github.com/Deijdane/LLM_ontology/mc4Corpus
+<https://github.com/Deijdane/LLM_ontology/mc4Corpus> rdf:type owl:NamedIndividual ,
+                                                              <https://github.com/Deijdane/LLM_ontology/Dataset> .
+
+
+###  https://github.com/Deijdane/LLM_ontology/wikipedia
+<https://github.com/Deijdane/LLM_ontology/wikipedia> rdf:type owl:NamedIndividual ,
+                                                              <https://github.com/Deijdane/LLM_ontology/Dataset> .
 
 
 #################################################################
@@ -226,13 +1460,10 @@
 #################################################################
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( <https://github.com/Deijdane/LLM_ontology/Architecture>
-                <https://github.com/Deijdane/LLM_ontology/Company>
-                <https://github.com/Deijdane/LLM_ontology/Dataset>
-                <https://github.com/Deijdane/LLM_ontology/Language>
-                <https://github.com/Deijdane/LLM_ontology/Task>
-                <https://github.com/Deijdane/LLM_ontology/Users>
-                <https://w3id.org/semsys/ns/swemls#StatisticalModel>
+  owl:members ( :ClassificationModel
+                :ClusteringModel
+                :RegressionModel
+                <https://github.com/Deijdane/LLM_ontology/LanguageModel>
               )
 ] .
 
